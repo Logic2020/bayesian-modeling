@@ -5,8 +5,9 @@
 Def: a statistical model written in multiple levels (that have a nested or hierarchy form) that estimates the parameters of the posterior distribution using the Bayesian method
 
 **Bayesian Statistics**
+
 ![This is an image of Bayes Theorem](images/bayes_formula.PNG)
-![This is an image of intuition of Bayesian Statistics](images/bayesian_image.PNG)
+![This is an image of intuition of Bayesian Statistics](images/bayes_distro_graph.PNG)
 
 
 ## Intuition Behind Method:
