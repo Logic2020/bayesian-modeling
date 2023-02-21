@@ -2,7 +2,12 @@
 (also called multilevel modeling)
 
 ## Definition & Background:
-Overview of Bayesian hierarchical, or multilevel, modeling with code examples
+Def: a statistical model written in multiple levels (that have a nested or hierarchy form) that estimates the parameters of the posterior distribution using the Bayesian method
+
+**Bayesian Statistics**
+![This is an image of Bayes Theorem](images/bayes_formula.PNG)
+![This is an image of intuition of Bayesian Statistics](images/bayesian_image.PNG)
+
 
 ## Intuition Behind Method:
 
