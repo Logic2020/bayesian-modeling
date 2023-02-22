@@ -18,14 +18,23 @@ The background knowledge is expressed as a prior distribution.  The observationa
 
 ## Steps:
 ### Key Terms ###
+
 **Prior Distribution** = previous beliefs or information about the parameters in a statistical model before seeing the data; probability distributions for the function parameters
+
 **Likelihood** = the conditional probability distribution of the given parameters of the data, defined up to a constant
+
 **Posterior Distribution** = a way to summarize one’s updated knowledge, balancing prior knowledge with observed data
+
 **Hyper-parameters** = parameters that define the prior distribution, such as mean and variance for a normal distribution
+
 **Prior Predictive Distribution** = the distribution for the joint distribution (e.g. the product of the likelihood and prior)
+
 **Hyper prior** =
+
 **Marginalization** =
-**Joint Probability** =
+
+**Joint Probability** = the product of the likelihood and prior; the probability of two events happening together
+
 **Conditional Distribution** =
 
 
@@ -47,9 +56,10 @@ Types of Priors:
 
 
 ### _Stage II: Likelihood Function_ ###
-Determine the likelihood function (probability density function) using the information about the parameters available in the observed data.
 
 **2. Collect Data and Check Assumptions**
+
+Determine the likelihood function (probability density function) using the observational data.
 
 **3. Clean and Prepare Data**
 
