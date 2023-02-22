@@ -73,8 +73,11 @@ The process of checking whether the priors make sense by generating data accordi
 The prior predictive distribution is the distribution of observations "averaged" over all possible values of the parameter.
 
 Steps:
+
 a. Simulate parameters based on the specified prior distribution
+
 b. Simulate sample data based on the likelihood function using the simulated parameters (this is the same as simulating data from the joint distribution, which is the product of the likelihood and prior)
+
 c. Asses the simulated sample to determine if the data obeys physical constraints and matches your intuition
 
 
