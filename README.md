@@ -112,9 +112,10 @@ Bayesian Models
 - https://www.astro.umd.edu/~miller/teaching/astr288a/lecture08.pdf
 - https://www.r-bloggers.com/2019/05/bayesian-models-in-r-2/ (R)
 - https://statswithr.github.io/book/the-basics-of-bayesian-statistics.html
-- https://github.com/markdregan/Bayesian-Modelling-in-Python
+- https://github.com/markdregan/Bayesian-Modelling-in-Python (Python)
 - http://modernstatisticalworkflow.blogspot.com/2017/05/model-checking-with-log-posterior.html
 - http://www.stat.columbia.edu/~gelman/book/BDA3.pdf
+- https://nyu-cdsc.github.io/learningr/assets/kruschke_bayesian_in_R.pdf (R)
 
 
 Prior Elicitation
