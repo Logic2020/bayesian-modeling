@@ -59,13 +59,11 @@ Types of Priors:
 
 **2. Collect Data and Check Assumptions**
 
-Determine the likelihood function (probability density function) using the observational data.
-
 **3. Clean and Prepare Data**
 
 **4. Determine Likelihood Function**
 
-
+Determine the likelihood function (probability density function) using the observational data.
 
 **5. Conduct a Prior Predictive Check**
 The process of checking whether the priors make sense by generating data according to the prior in order to assess whether the results are within the plausible parameter space. This step is used to improve the understanding of the implications of the specified priors, not a method for changing the prior.
