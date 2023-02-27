@@ -40,11 +40,19 @@ The background knowledge is expressed as a prior distribution.  The observationa
 **Conditional Distribution** =
 
 
-### _Stage I: Prior Distribution_ ###
 
-**1. Define, construct, or select the Priors (also called Prior Elicitation)**
 
-Capture available knowledge about a given parameter in a statistical model via the prior distribution. This is typically determined before data collection. This step is one of the more important choices made when implementing a Bayesian model since it can have a substantial impact on the final results. The informativeness of the posterior depends on the informativeness of the prior.
+**1. Collect, Clean and Prepare Data**
+
+Having a good understanding of the context of the problem and data is often key in determining a prior.
+
+**2. Determine Likelihood Function**
+
+Determine the likelihood function (probability density function) using the observational data. The PDF will contain parameters which will be what you are trying to estimate. Prior distributions of possible parameter values will be choosen in the next step.
+
+**3. Define, construct, or select the parameter Priors (also called Prior Elicitation)**
+
+Priors allow you to capture available knowledge about a given parameter in a statistical model. This step is one of the more important choices made when implementing a Bayesian model since it can have a substantial impact on the final results. The informativeness of the posterior depends on the informativeness of the prior.
 
 Methods of obtaining priors:
 - ask a subjectmatter expert
@@ -57,55 +65,40 @@ Types of Priors:
 - Diffuse: a high amount of uncertainty; large variance; the observational data will have most of the impact on the posterior
 
 
-### _Stage II: Likelihood Function_ ###
+**4. Conduct Prior Predictive Checking**
 
-**2. Collect Data and Check Assumptions**
+This is the process of checking whether the choosen parameter priors make sense by generating sample data according to the priors and the likelihood function, and seeing if the results represent any data set that could plausibly be observed. This step is used to improve the understanding of the implications of the specified priors. 
 
-**3. Clean and Prepare Data**
+The generation of these samples creates the prior predictive distribution, which is the distribution of observations over all possible values of the parameter. It is important that this prior predictive distribution has some mass around extreme but plausible observations, and no mass on impossible observations. 
 
-**4. Determine Likelihood Function**
+Implementation:
 
-Determine the likelihood function (probability density function) using the observational data.
+a. Simulate parameter value(s) based on the specified prior distribution(s)
 
-**5. Conduct a Prior Predictive Check**
-comparing observed data to simulated data from the posterior (or prior) predictive distribution
+b. Use those parameter values to generate a data sample using the likelihood function (this is the same as simulating data from the joint distribution, which is the product of the likelihood and prior)
 
-The process of checking whether the priors make sense by generating data according to the prior in order to assess whether the results are within the plausible parameter space. This step is used to improve the understanding of the implications of the specified priors, not a method for changing the prior. 
+c. Repeat many times to see what kind of data sets we might expect given the priors (e.g. generate 1000 samples)
 
-Prior predictive checking compares the observed data with the prior predictive distribution and checks their compatibility. Using kernel density estimation, the observational data and the samples from the predictive distribution can be compared.
+d. Create a series of visualizations to scroll through the sample datasets to investigate the variability and multivariate structure of the distribution (e.g. scatterplot of sample data against observational data; empirical cumulative distribution plot of f(x) of each sample)
 
-prior data-generating distribution p(y) could represent any data set that could plausibly be observed
-
- the standard concept of weakly informative priors, it is important that this prior predictive distribution for the data has at least some mass around extreme but plausible data sets. However, there should be no mass on completely implausible data sets. 
-
-The prior predictive distribution is the distribution of observations "averaged" over all possible values of the parameter. 
-
-Steps:
-
-a. Simulate parameter values based on the specified prior distribution
-
-b. Simulate sample data based on the likelihood function (step #4) using the simulated parameters (this is the same as simulating data from the joint distribution, which is the product of the likelihood and prior)
-
-c. Create a series of visualizations to scroll through of simulated datasets that can be used to investigate the variability and multivariate structure of the distribution
-
-d. Asses the simulated sample to determine if the data obeys physical constraints and matches your intuition
+d. Asses the simulated sample to determine if the data obeys physical constraints and matches your intuition. If it doesn't, consider more appropriate priors
 
 Example:
 
-diffuse (a) and weakly informative priors (b)
-show realizations from the prior predictive distribution using priors for the βs and τs that are vague and weakly informative respectively; the same N+(0,1) prior is used for σ in both cases; simulated data are plotted on the y-axis and observed data on the x-axis; because the simulations under the vague and weakly informative priors are so different. The data that are generated by (a) are completely impossible for the context of the example. Inspecting the graphs within the context of the problem (inspecting the y-axis range and what values are feasible), we conclude the diffuse priors do not actually respect the contextual knowledge.
-
+The below graphs shows the plots of samples generated from a diffuse prior (a) and weakly informative prior (b). Each prior produces very different sample data. The sample data generated by (a) are completely impossible for the context of the example. Inspecting the graphs within the context of the problem (inspecting the y-axis range and what values are feasible), we conclude the diffuse priors do not actually respect the contextual knowledge.
 
 ![This is an image of an example prior predictive check](images/bayesian_prior_pred_check.PNG)
 
 
+**5. Calculate Posertior Distribution, or Joint Distribution**
 
-### _Stage III: Posterior Distribution_ ###
+the product of the likelihood and prior. We use the joint distribution to generate parameter sets and data sets and then check if the results make sense
+
 
 Combine both the prior distribution and the likelihood function using Bayes’ theorem to output the posterior distribution. The posterior distribution reflects one’s updated knowledge, balancing prior knowledge with observed data, and is used to conduct probabilistic inferences. 
 
 
-**6. Conduct Posterior Predictive Check***
+**6. Conduct Posterior Predictive Check**
 The idea behind posterior predictive checking is simple: if a model is a good fit then we should be able to use it to generate data that looks a lot like the data we observed
 
 posterior predictive checks are vital for model evaluation
@@ -145,6 +138,7 @@ d. Include sensitivity analysis results to comment on how robust (or not) the fi
 ## Resources:
 Bayesian Models
 - https://osf.io/wdtmc
+- http://bebi103.caltech.edu.s3-website-us-east-1.amazonaws.com/2018/tutorials/t6a_model_generation_and_prior_predictive_checks.html
 - https://bayesball.github.io/BOOK/bayesian-hierarchical-modeling.html
 - https://www.astro.umd.edu/~miller/teaching/astr288a/lecture08.pdf
 - https://www.r-bloggers.com/2019/05/bayesian-models-in-r-2/ (R)
