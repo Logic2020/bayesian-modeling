@@ -31,7 +31,7 @@ The background knowledge is expressed as a prior distribution.  The observationa
 
 **Prior Predictive Distribution** = the distribution for the joint distribution (e.g. the product of the likelihood and prior); a distribution of all possible samples that could occur if the model is true
 
-**Hyper prior** =
+**Hyper prior** = a prior distribution on a parameter of a prior distribution; allows one to express uncertainty around what the values of the prior distribution parameters should be
 
 **Marginalization** =
 
@@ -111,6 +111,9 @@ The idea behind posterior predictive checking is simple: if a model is a good fi
 posterior predictive checks are vital for model evaluation
 
 This is a way to validate a model. The idea is to generate data from the model using parameters from draws from the posterior. It analyzes the degree to which data generated from the model deviate from data generated from the true distribution.
+
+If the model fits, then replicated data generated under the model should look similar to observed data. draw simulated values from the posterior predictive distribution of replicated data and compare these samples to the observed data
+
 
 
 **7. Conduct a Sensitivity Analysis on Priors**
