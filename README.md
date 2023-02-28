@@ -1,16 +1,14 @@
 # Bayesian Modeling 
 
 ## Definition & Background:
-Def: 
-
-**Bayesian Statistics**
+Def: a way of approaching statistics where the parameters of a density function are treated as random variables, versus fixed values. Our beliefs about the values of the parameters can be expressed as a probability distribution, and just updated as we run experiments or collect data. Then, a final probability distribution of the parameter values is determined leveraging Bayes Theorem.
 
 ![This is an image of Bayes Theorem](images/bayes_formula.PNG)
 ![This is an image of intuition of Bayesian Statistics](images/bayes_distro_graph_2.PNG)
 
 
 ## Intuition Behind Method:
-The background knowledge is expressed as a prior distribution.  The observational data is expressed in the form of a likelihood function. These are combined to determine the standardized posterior distribution, which can be used for making predictions about future events.
+The background knowledge of possible values for a parameter we are trying to estimate is expressed as a prior distribution.  The observational data is expressed in the form of a likelihood function. These are combined to determine the standardized posterior distribution, which can be used for making predictions about future events.
 
 ## Use Cases of Bayesian:
 - **Small sample sizes**
@@ -20,17 +18,19 @@ The background knowledge is expressed as a prior distribution.  The observationa
 
 ## Key Terms
 
-**Prior Distribution** = previous beliefs or information about the parameters in a statistical model before seeing the data; probability distributions for the function parameters
+**Prior Distribution Function** = beliefs or information about the parameters of a statistical model before seeing the data; probability distributions for the posterior density function's parameters; P(theta)
 
-**Likelihood** = the conditional probability distribution of the given parameters of the data, defined up to a constant
+**Likelihood Function** = the conditional probability distribution of the observational data; P(data | theta)
 
-**Posterior Distribution** = a way to summarize one’s updated knowledge, balancing prior knowledge with observed data
+**Posterior Distribution Function** = a way to summarize one’s updated knowledge, balancing prior knowledge with observed data; a probability density function that combines the prior density function and the likelihood
 
 **Hyper-parameters** = parameters that define the prior distribution, such as mean and variance for a normal distribution
 
 **Prior Predictive Distribution** = the distribution for the joint distribution (e.g. the product of the likelihood and prior); a distribution of all possible samples that could occur if the model is true
 
 **Hyper prior** = a prior distribution on a parameter of a prior distribution; allows one to express uncertainty around what the values of the prior distribution parameters should be
+
+**Conjugate Prior** = case where the prior distribution and posterior distribution are in the same probability distribution family; gives a closed-form expression for the posterior where numerical integration would otherwise be necessary
 
 **Marginalization** =
 
@@ -50,9 +50,9 @@ Having a good understanding of the context of the problem and data is often key 
 
 Determine the likelihood function (probability density function) using the observational data. The PDF will contain parameters which will be what you are trying to estimate. Prior distributions of possible parameter values will be choosen in the next step.
 
-### 3. Define, construct, or select the parameter Priors (process also called Prior Elicitation)
+### 3. Define, construct, or select the parameter(s) Prior Distribution Function (process also called Prior Elicitation)
 
-Priors allow you to capture available knowledge about a given parameter in a statistical model. This step is one of the more important choices made when implementing a Bayesian model since it can have a substantial impact on the final results. The informativeness of the posterior depends on the informativeness of the prior.
+Priors allow you to capture available knowledge about a given parameter in a statistical model. Each parameter can have it's own prior distribution function. This step is one of the more important choices made when implementing a Bayesian model since it can have a substantial impact on the final results. The informativeness of the posterior depends on the informativeness of the prior.
 
 **Methods of obtaining priors:**
 - ask a subjectmatter expert
@@ -91,10 +91,21 @@ The below graphs shows the plots of samples generated from a diffuse prior (a) a
 ![This is an image of an example prior predictive check](images/bayesian_prior_pred_check.PNG)
 
 
-### 5. Calculate Posertior Distribution, or Joint Distribution
+### 5. Calculate Postertior Distribution Function for each parameter, or Joint Distribution
 
-Combine both the prior distribution and the likelihood function using Bayes’ theorem to output the posterior distribution. The posterior distribution reflects one’s updated knowledge, balancing prior knowledge with observed data, and is used to conduct probabilistic inferences. 
+Combine both the prior distribution and the likelihood function using Bayes’ theorem to output the posterior distribution for the parameters. The posterior distribution reflects one’s updated knowledge, balancing prior knowledge with observed data, and is used to conduct probabilistic inferences. 
 
+In simple cases where the Prior distribution is a conjugate of the Likelihood, the posterior distribution will be the same function as the Prior.
+
+![This is an image of an example of a posterior with a conjugate prior](images/conjugate_example.PNG)
+
+To map out the shape of the posterior distribution function, the sampling algorithm MCMC is used. MCMC is used to generate a random sample that follows the probability distribution of the posterior, where what is referred to in MCMC as the "proposal density function" is our prior distribution function and what MCMC refers to as the "posterior density function" is our likelihood function. From there, we can use the probability distribution of the posterior to:
+
+- calculate mean, median, mode of the parameter
+- find probability that parameter falls within a specific range of values
+- calculate a 95% confidence interval of the parameter
+
+See https://github.com/akokotis/mcmc-overview for more details on the MCMC approach.
 
 ### 6. Conduct Posterior Predictive Check
 
@@ -136,6 +147,7 @@ Bayesian Models
 - http://modernstatisticalworkflow.blogspot.com/2017/05/model-checking-with-log-posterior.html
 - http://www.stat.columbia.edu/~gelman/book/BDA3.pdf
 - https://nyu-cdsc.github.io/learningr/assets/kruschke_bayesian_in_R.pdf (R)
+- https://www.johndcook.com/blog/conjugate_prior_diagram/
 
 
 Prior Elicitation
