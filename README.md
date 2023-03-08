@@ -134,6 +134,29 @@ d. Include sensitivity analysis results to comment on how robust (or not) the fi
 
 
 
+# Bayesian Hierarchical Modeling 
+(also called multilevel modeling)
+
+## Definition & Background:
+Def: a statistical model that contains a hierarchy of parameters, where there exist parameters that describe other parameters, fit using a Bayesian approach; data is group-level and can also be nested or hierarchy structure
+
+### Key Terms ###
+**Pooling** = the degree to which group-level data and model parameter estimates are aggregated together or all independent
+
+**Complete Pooling** = to ignore any grouping within the data and describe all groups in the data using the same model; all groups have the same parameter values
+
+**No Pooling** = to treat each group within data as its own dataset and fit a unique model for each group; all groups have independent parameter values and inferences about one group will be independent of the inferences on the remaining groups
+
+**Partial Pooling** = to initially treat each group within data as its own dataset where each group has its own parameter, then introduce another variable to describe the distribution of the group parameter values (e.g. latent model); the priors on this latent model as called hyper-priors
+
+![This is an visual representation of partial pooling](images/partial_pooling.PNG)
+
+**Hyper prior** = a prior distribution on a parameter of a prior distribution; allows one to express uncertainty around what the values of the prior distribution parameters should be
+
+
+
+
+
 
 ## Resources:
 Bayesian Models
@@ -166,3 +189,11 @@ Posterior Predicitive Check & Sensitivity Analysis
 - https://rss.onlinelibrary.wiley.com/doi/full/10.1111/rssa.12378 (R)
 - http://www.stat.columbia.edu/~gelman/bayescomputation/bdachapter6.pdf
 - https://www.frontiersin.org/articles/10.3389/fpsyg.2020.608045/full
+
+
+Bayesian Hierarchical Modeling
+
+- https://www.pymc.io/projects/examples/en/latest/case_studies/rugby_analytics.html#id5 (Python; PyMC)
+- https://github.com/markdregan/Bayesian-Modelling-in-Python/blob/master/Section%203.%20Hierarchical%20modelling.ipynb (Python, PyMC3)
+- https://bayesball.github.io/BOOK/bayesian-hierarchical-modeling.html#example-ratings-of-animation-movies (R, JAGS)
+- https://www.intechopen.com/chapters/82619 
