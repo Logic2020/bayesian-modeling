@@ -1,7 +1,7 @@
 # Bayesian Modeling 
 
 ## Definition & Background:
-Def: a way of approaching statistics where the parameters of a density function are treated as random variables, versus fixed values. Our beliefs about the values of the parameters can be expressed as a probability distribution, and just updated as we run experiments or collect data. Then, a final probability distribution of the parameter values is determined leveraging Bayes Theorem.
+Def: a way of approaching statistics where the parameters of a density function are treated as random variables, versus fixed values. Our beliefs about the values of the parameters can be expressed as a probability distribution, and updated as we run experiments or collect data. Then, a final probability distribution of the parameter values is determined leveraging Bayes Theorem.
 
 ![This is an image of Bayes Theorem](images/bayes_formula.PNG)
 ![This is an image of intuition of Bayesian Statistics](images/bayes_distro_graph_2.PNG)
