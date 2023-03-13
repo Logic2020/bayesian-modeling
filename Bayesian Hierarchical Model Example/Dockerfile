@@ -19,4 +19,10 @@ COPY code/ .
 
 # jupyter nbconvert --execute --to html BayesianHierarchicalModelExample.ipynb
 
+# docker cp CONTAINERID:/code/BayesianHierarchicalModelExample.html .
+
+#docker steps
+#docker build -t bayesian-model-ex .
+#docker run -d -p -it 5000:5000 bayesian-model-ex
+
 
