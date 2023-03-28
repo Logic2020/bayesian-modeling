@@ -23,6 +23,4 @@ COPY code/ .
 
 #docker steps
 #docker build -t bayesian-model-ex .
-#docker run -d -p -it 5000:5000 bayesian-model-ex
-
-
+#docker run -d -p 5000:5000 -it bayesian-model-ex
